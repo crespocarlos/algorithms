@@ -19,11 +19,11 @@ namespace console_app.Sorters
                 int middle = (int)Math.Floor((decimal)(start+end)/2);
                 Sort(arr, start, middle);
                 Sort(arr, middle + 1, end);
-                Sort(arr, start, middle, end);
+                Merge(arr, start, middle, end);
             }
         }
 
-        private void Sort(int[] arr, int start, int middle, int end) {
+        private void Merge(int[] arr, int start, int middle, int end) {
             int[] left = new int[(middle - start) + 1];
             int[] right = new int[end - middle];
             int rightIndex = 0;
@@ -34,11 +34,11 @@ namespace console_app.Sorters
             }
 
             for (int j = 0; j < right.Length; j++) {
-                right[j] = arr[middle + j + 1];
+                right[j] = arr[middle + 1 + j];
             }
 
             for (int i = start; i <= end; i++) {
-                if ((rightIndex >= right.Length) || (i < left.Length && left[leftIndex] <= right[rightIndex])) {
+                if ((rightIndex >= right.Length) || (leftIndex < left.Length && left[leftIndex] <= right[rightIndex])) {
                     arr[i] = left[leftIndex];
                     leftIndex++;
                 } else {

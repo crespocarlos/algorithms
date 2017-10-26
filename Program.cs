@@ -13,29 +13,23 @@ namespace ConsoleApplication
     public class Program
     {
 
+        static int makeArrayConsecutive2(int[] statues) {
+            HashSet<int> inexists = new HashSet<int>();
+            HashSet<int> exists = new HashSet<int>(statues);
+            
+            for (var i = 0; i < statues.Length - 1; i++) {
+                var gap = Math.Abs(statues[i] - statues[i + 1]);
+                if (gap > 1) {
+                    var range = Enumerable.Range((statues[i] > statues[i + 1] ? statues[i + 1] : statues[i]) + 1, gap - 1);
+                    inexists.UnionWith(range);
+                }
+            }
+            
+            return inexists.Count;
+        }
+
         public static void Main(string[] args) {
-
-            
-            // StackTest(new CustomStack());
-            // StackTest(new DoublyLinkedListStack());
-            // LinkedListTest();
-            // Sorts();
-            // SortEmployee();
-            // DuplicationCheck();
-            // IsAnagram();
-            // TowerOfHanoi();
-
-            // Sorts(new MergeSort());
-
-            // AddRecursive();
-
-            // BinarySearchTree();
-
-            // Sorts(new QuickSort());
-
-            HashTable();
-
-            
+            makeArrayConsecutive2(new int[] { 6, 2, 3, 8});
         }
 
         static void HashTable() {
@@ -130,7 +124,7 @@ namespace ConsoleApplication
         }
 
         static void Sorts(ISort sorter) {
-            int[] test = new int[] {12, 9, 5, 3, 2};
+            int[] test = new int[] {8, 30, 1, 2, 5, 6};
 
             int[] result = sorter.Sort(test);
 
