@@ -29,7 +29,7 @@ namespace ConsoleApplication
         }
 
         public static void Main(string[] args) {
-            makeArrayConsecutive2(new int[] { 6, 2, 3, 8});
+            Sorts(new MergeSort());
         }
 
         static void HashTable() {
